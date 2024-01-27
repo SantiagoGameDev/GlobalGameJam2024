@@ -8,6 +8,15 @@ public class PlayerVan : MonoBehaviour
 
     public int playerMushroomCount = 0;
 
+    [SerializeField]
+    AudioSource trippyAudio;
+
+    public AudioClip Gnome;
+    public AudioClip Wow;
+    public AudioClip HisNameIs;
+    public AudioClip AreYouSure;
+    public AudioClip Huh;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,5 +27,31 @@ public class PlayerVan : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayRandomClip()
+    {
+        int chosenClip = Random.Range(1, 5);
+
+        if (chosenClip == 1)
+        {
+            trippyAudio.PlayOneShot(Gnome);
+        }
+        else if (chosenClip == 2)
+        {
+            trippyAudio.PlayOneShot(Wow);
+        }
+        else if (chosenClip == 3)
+        {
+            trippyAudio.PlayOneShot(HisNameIs);
+        }
+        else if (chosenClip == 4)
+        {
+            trippyAudio.PlayOneShot(AreYouSure);
+        }
+        else if (chosenClip == 5)
+        {
+            trippyAudio.PlayOneShot(Huh);
+        }
     }
 }
