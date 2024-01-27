@@ -131,6 +131,11 @@ public class CarController : MonoBehaviour
         playerActions.Car.Disable();
     }
 
+    public void FlipCar()
+    {
+
+    }
+
     private void ExitCar(InputAction.CallbackContext context)
     {
         GameManager.Instance.SwitchControls();
@@ -142,5 +147,6 @@ public class CarController : MonoBehaviour
 
         carRb.velocity = Vector3.zero;  
     }
+
 
 }
