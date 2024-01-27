@@ -33,6 +33,8 @@ public class CarController : MonoBehaviour
     private PlayerActions playerActions;
     private Rigidbody carRb;
 
+    private Quaternion defaultRot;
+
 
     Vector3 moveInput;
     Vector3 steerInput;
@@ -44,9 +46,12 @@ public class CarController : MonoBehaviour
         carRb = GetComponent<Rigidbody>();
 
         carRb.centerOfMass = centerOfMass;
+        defaultRot = transform.rotation;
 
-        playerActions.Car.Brake.performed += Brake;
+        playerActions.Car.Brake.performed += ActivateBrake;
+        playerActions.Car.Brake.canceled += ReleaseBrake;
         playerActions.Car.ExitCar.performed += ExitCar;
+        playerActions.Car.FlipCar.performed += FlipCar;
     }
 
     private void Update()
@@ -100,25 +105,6 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void Brake(InputAction.CallbackContext context)
-    {
-        if (playerActions.Car.Brake.IsPressed())
-        {
-            foreach (Wheel wheel in wheels)
-            {
-                wheel.wheelCollider.brakeTorque = brakeAccel * Time.deltaTime;
-            }
-        }
-        else
-        {
-            foreach (Wheel wheel in wheels)
-            {
-                wheel.wheelCollider.brakeTorque = 0;
-            }
-        }
-
-    }
-
     public void EnableCarControls()
     {
         playerActions.Car.Enable();
@@ -131,6 +117,12 @@ public class CarController : MonoBehaviour
         playerActions.Car.Disable();
     }
 
+    private void FlipCar(InputAction.CallbackContext context)
+    {
+        Debug.Log("Car Flipped");
+        transform.rotation = defaultRot;
+    }
+
     private void ExitCar(InputAction.CallbackContext context)
     {
         GameManager.Instance.SwitchControls();
@@ -141,6 +133,25 @@ public class CarController : MonoBehaviour
         }
 
         carRb.velocity = Vector3.zero;  
+    }
+
+    private void ActivateBrake(InputAction.CallbackContext context)
+    {
+        Debug.Log("Braking");
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.wheelCollider.brakeTorque = brakeAccel * Time.deltaTime;
+        }
+    }
+
+    private void ReleaseBrake(InputAction.CallbackContext context)
+    {
+        Debug.Log("Brake Released");
+
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.wheelCollider.brakeTorque = 0;
+        }
     }
 
 }

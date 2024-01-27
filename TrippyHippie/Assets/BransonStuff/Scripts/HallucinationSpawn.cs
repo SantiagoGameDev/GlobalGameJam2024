@@ -22,6 +22,7 @@ public class HallucinationSpawn : MonoBehaviour
     //Time to spawn a hallucination
     private float spawnTimer;
     //Time between hallucination spawn checks
+    [SerializeField]
     private float timeToSpawn = 3f;
 
     //The max radius an object can be from the player
@@ -29,7 +30,7 @@ public class HallucinationSpawn : MonoBehaviour
     private float maxRadius = 40f;
 
     //test variable for the mushroom count, will be replaced by GameManager mushroom cout
-    int testMushroomCount;
+    public int testMushroomCount;
 
     //debug text to see mushroom count
     [SerializeField]
@@ -50,7 +51,7 @@ public class HallucinationSpawn : MonoBehaviour
 
         //testMushroomCount = GameManager.Instance.TotalMushroomsCollected;
 
-        spawnChance = testMushroomCount * 2;
+        spawnChance = testMushroomCount * 3;
 
         //spawnChance cant go over 100
         if (spawnChance > 100)
@@ -58,28 +59,9 @@ public class HallucinationSpawn : MonoBehaviour
             spawnChance = 100;
         }
 
-        //Determine spawn frequency based on how many mushrooms have been collected
-        switch (testMushroomCount / 5)
+        if (testMushroomCount > 0)
         {
-            case 0:
-                timeToSpawn = 3f;
-                break;
-            case 1:
-                timeToSpawn = 2f;
-                break;
-            case 2:
-                timeToSpawn = 1f;
-                break;
-            case 3:
-                timeToSpawn = 0.5f;
-                break;
-            case 4:
-            case 5:
-                timeToSpawn = 0.25f;
-                break;
-            default:
-                timeToSpawn = 0.1f;
-                break;
+            timeToSpawn = 1f / ((testMushroomCount + 1f) / 5f);
         }
 
 
@@ -126,14 +108,15 @@ public class HallucinationSpawn : MonoBehaviour
         //figure out which hallucination to spawn
         GameObject hallucination = ChooseHallucination();
 
-        //Gets where to spawn the player
-        Vector3 pos = GetSpawnPosition();
-
         if (hallucination != null) 
         {
             //Randomly generates a scale for the hallucination to be at
             float scale = hallucination.transform.localScale.x;
-            scale *= Random.Range(0.25f, 5f);
+            scale *= Random.Range(0.5f, 4.5f);
+
+            //Gets where to spawn the player
+            Vector3 pos = GetSpawnPosition();
+            pos.y = scale * 2;
 
             //spawns in the hallucination and sets its scale
             GameObject hal = Instantiate(hallucination, pos, Quaternion.identity);
@@ -173,7 +156,7 @@ public class HallucinationSpawn : MonoBehaviour
         float randRad = Random.Range(0f, 2 * Mathf.PI);
 
         //generates a random radius for the hallucination to spawn from
-        float radius = Random.Range(3f, maxRadius);
+        float radius = Random.Range(11f, maxRadius);
 
         //use sin and cos to get the circle positions of the 
         pos.x = Mathf.Cos(randRad) * radius + centre.x;

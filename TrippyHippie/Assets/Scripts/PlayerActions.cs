@@ -145,6 +145,15 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""FlipCar"",
+                    ""type"": ""Button"",
+                    ""id"": ""3f27e203-c7c1-4574-b96f-c46369f4f163"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -224,6 +233,17 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
                     ""action"": ""ExitCar"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ec803330-f0ce-4f9d-b6cd-cd6e0e1fe8e3"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""FlipCar"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -239,6 +259,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         m_Car_Movement = m_Car.FindAction("Movement", throwIfNotFound: true);
         m_Car_Brake = m_Car.FindAction("Brake", throwIfNotFound: true);
         m_Car_ExitCar = m_Car.FindAction("ExitCar", throwIfNotFound: true);
+        m_Car_FlipCar = m_Car.FindAction("FlipCar", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -357,6 +378,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
     private readonly InputAction m_Car_Movement;
     private readonly InputAction m_Car_Brake;
     private readonly InputAction m_Car_ExitCar;
+    private readonly InputAction m_Car_FlipCar;
     public struct CarActions
     {
         private @PlayerActions m_Wrapper;
@@ -364,6 +386,7 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         public InputAction @Movement => m_Wrapper.m_Car_Movement;
         public InputAction @Brake => m_Wrapper.m_Car_Brake;
         public InputAction @ExitCar => m_Wrapper.m_Car_ExitCar;
+        public InputAction @FlipCar => m_Wrapper.m_Car_FlipCar;
         public InputActionMap Get() { return m_Wrapper.m_Car; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -382,6 +405,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ExitCar.started += instance.OnExitCar;
             @ExitCar.performed += instance.OnExitCar;
             @ExitCar.canceled += instance.OnExitCar;
+            @FlipCar.started += instance.OnFlipCar;
+            @FlipCar.performed += instance.OnFlipCar;
+            @FlipCar.canceled += instance.OnFlipCar;
         }
 
         private void UnregisterCallbacks(ICarActions instance)
@@ -395,6 +421,9 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
             @ExitCar.started -= instance.OnExitCar;
             @ExitCar.performed -= instance.OnExitCar;
             @ExitCar.canceled -= instance.OnExitCar;
+            @FlipCar.started -= instance.OnFlipCar;
+            @FlipCar.performed -= instance.OnFlipCar;
+            @FlipCar.canceled -= instance.OnFlipCar;
         }
 
         public void RemoveCallbacks(ICarActions instance)
@@ -422,5 +451,6 @@ public partial class @PlayerActions: IInputActionCollection2, IDisposable
         void OnMovement(InputAction.CallbackContext context);
         void OnBrake(InputAction.CallbackContext context);
         void OnExitCar(InputAction.CallbackContext context);
+        void OnFlipCar(InputAction.CallbackContext context);
     }
 }
