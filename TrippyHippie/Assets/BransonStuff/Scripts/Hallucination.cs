@@ -35,8 +35,9 @@ public class Hallucination : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Vector3 lookAt = new Vector3(player.transform.position.x, 0, player.transform.position.z);
         //transform.LookAt(GameManager.Instance.Player.transform);
-        transform.LookAt(player.transform);
+        transform.LookAt(lookAt);
 
         //if despawn timer hasnt hit timetodespawn
         if (despawnTimer < timeToDespawn )

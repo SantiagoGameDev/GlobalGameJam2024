@@ -50,7 +50,7 @@ public class HallucinationSpawn : MonoBehaviour
 
         //testMushroomCount = GameManager.Instance.TotalMushroomsCollected;
 
-        spawnChance = testMushroomCount * 2;
+        spawnChance = testMushroomCount * 4;
 
         //spawnChance cant go over 100
         if (spawnChance > 100)
@@ -62,13 +62,13 @@ public class HallucinationSpawn : MonoBehaviour
         switch (testMushroomCount / 5)
         {
             case 0:
-                timeToSpawn = 3f;
-                break;
-            case 1:
                 timeToSpawn = 2f;
                 break;
-            case 2:
+            case 1:
                 timeToSpawn = 1f;
+                break;
+            case 2:
+                timeToSpawn = 0.75f;
                 break;
             case 3:
                 timeToSpawn = 0.5f;
@@ -77,8 +77,14 @@ public class HallucinationSpawn : MonoBehaviour
             case 5:
                 timeToSpawn = 0.25f;
                 break;
-            default:
+            case 6:
+            case 7:
+            case 8:
+            case 9:    
                 timeToSpawn = 0.1f;
+                break;
+            default:
+                timeToSpawn = 0.05f;
                 break;
         }
 
@@ -126,14 +132,15 @@ public class HallucinationSpawn : MonoBehaviour
         //figure out which hallucination to spawn
         GameObject hallucination = ChooseHallucination();
 
-        //Gets where to spawn the player
-        Vector3 pos = GetSpawnPosition();
-
         if (hallucination != null) 
         {
             //Randomly generates a scale for the hallucination to be at
             float scale = hallucination.transform.localScale.x;
-            scale *= Random.Range(0.25f, 5f);
+            scale *= Random.Range(0.5f, 4.5f);
+
+            //Gets where to spawn the player
+            Vector3 pos = GetSpawnPosition();
+            pos.y = scale * 2;
 
             //spawns in the hallucination and sets its scale
             GameObject hal = Instantiate(hallucination, pos, Quaternion.identity);
@@ -173,7 +180,7 @@ public class HallucinationSpawn : MonoBehaviour
         float randRad = Random.Range(0f, 2 * Mathf.PI);
 
         //generates a random radius for the hallucination to spawn from
-        float radius = Random.Range(3f, maxRadius);
+        float radius = Random.Range(12.5f, maxRadius);
 
         //use sin and cos to get the circle positions of the 
         pos.x = Mathf.Cos(randRad) * radius + centre.x;
