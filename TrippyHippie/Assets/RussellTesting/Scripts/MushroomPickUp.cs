@@ -14,7 +14,7 @@ public class MushroomPickUp : MonoBehaviour
         if(collision.gameObject.tag == "Player")
         {
             PlayerVan.Instance.playerMushroomCount += 1;
-            WorldData.Instance.UpdateTrippyViewChancePerc();
+            UIManager.Instance.UpdateTrippyView();
             Destroy(gameObject);
         }
     }
