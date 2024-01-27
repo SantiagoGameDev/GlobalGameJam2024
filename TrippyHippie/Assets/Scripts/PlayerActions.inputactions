@@ -123,6 +123,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "FlipCar",
+                    "type": "Button",
+                    "id": "3f27e203-c7c1-4574-b96f-c46369f4f163",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -200,6 +209,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ExitCar",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ec803330-f0ce-4f9d-b6cd-cd6e0e1fe8e3",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "FlipCar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
