@@ -356,6 +356,7 @@ GameObject:
   - component: {fileID: 293621730}
   - component: {fileID: 293621729}
   - component: {fileID: 293621732}
+  - component: {fileID: 293621733}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -566,6 +567,20 @@ MonoBehaviour:
       enableFptlForForwardOpaque: 0
       enableBigTilePrepass: 0
       isFptlEnabled: 0
+--- !u!114 &293621733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 293621728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b49717472181424995481c6dbe2715e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1690790813}
+  cameraVal: {x: 0, y: 15, z: -15}
 --- !u!1 &344953426
 GameObject:
   m_ObjectHideFlags: 0
@@ -699,6 +714,56 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 344953426}
   m_CullTransparentMesh: 1
+--- !u!1 &368176668
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 368176670}
+  - component: {fileID: 368176669}
+  m_Layer: 0
+  m_Name: GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &368176669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368176668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b981524abaa03f547b2dbde7a42f3bdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1690790809}
+  car: {fileID: 519396493}
+  carExit: {fileID: 0}
+  cameraFollow: {fileID: 293621733}
+  canDmg: 0
+  carHP: 0
+--- !u!4 &368176670
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368176668}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.9182434, y: 1.24, z: 1.0087824}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519396493
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2207,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da3d972214ba9734a8f000229ea7e37f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2000
+  speed: 500
 --- !u!1 &1795066694
 GameObject:
   m_ObjectHideFlags: 0
@@ -2189,3 +2254,4 @@ SceneRoots:
   - {fileID: 519396496}
   - {fileID: 1175365464}
   - {fileID: 836045723}
+  - {fileID: 368176670}
