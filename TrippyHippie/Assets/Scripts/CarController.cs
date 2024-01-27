@@ -45,6 +45,7 @@ public class CarController : MonoBehaviour
 
         carRb.centerOfMass = centerOfMass;
 
+        playerActions.Car.Brake.performed += Brake;
         playerActions.Car.ExitCar.performed += ExitCar;
     }
 
@@ -57,7 +58,6 @@ public class CarController : MonoBehaviour
     {
         Movement();
         Steer();
-        Brake();
     }
 
 
@@ -66,6 +66,11 @@ public class CarController : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             GameManager.Instance.SwitchControls();
+        }
+
+        if (collision.gameObject.CompareTag("Tree"))
+        {
+            GameManager.Instance.TakeCarDamage();
         }
     }
 
@@ -95,7 +100,7 @@ public class CarController : MonoBehaviour
         }
     }
 
-    private void Brake()
+    private void Brake(InputAction.CallbackContext context)
     {
         if (playerActions.Car.Brake.IsPressed())
         {
@@ -117,10 +122,12 @@ public class CarController : MonoBehaviour
     public void EnableCarControls()
     {
         playerActions.Car.Enable();
+        GameManager.Instance.canDmg = true;
     }
 
     public void DisableCarControls()
     {
+        GameManager.Instance.canDmg = false;
         playerActions.Car.Disable();
     }
 

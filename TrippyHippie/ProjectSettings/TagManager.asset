@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Mushroom
   - Car
+  - Tree
   layers:
   - Default
   - TransparentFX
