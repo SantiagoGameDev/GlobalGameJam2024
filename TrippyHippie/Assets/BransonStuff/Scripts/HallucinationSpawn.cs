@@ -49,7 +49,7 @@ public class HallucinationSpawn : MonoBehaviour
     {
         debugText.text = testMushroomCount.ToString();
 
-        //testMushroomCount = GameManager.Instance.TotalMushroomsCollected;
+        testMushroomCount = PlayerVan.Instance.playerMushroomCount;
 
         spawnChance = testMushroomCount * 3;
 

@@ -30,6 +30,9 @@ public class Hallucination : MonoBehaviour
 
         //generates how long until it despawns
         timeToDespawn = Random.Range(0, maxTimeToDespawn);
+
+        //Fade the hallucination in
+        StartCoroutine(FadeIn());
     }
 
     // Update is called once per frame
@@ -40,7 +43,7 @@ public class Hallucination : MonoBehaviour
         transform.LookAt(lookAt);
 
         //if despawn timer hasnt hit timetodespawn
-        if (despawnTimer < timeToDespawn )
+        if (despawnTimer < timeToDespawn)
         {
             //increase despawn timer
             despawnTimer += Time.deltaTime;
@@ -96,6 +99,7 @@ public class Hallucination : MonoBehaviour
         Destroy(this.gameObject);
     }
 
+    //Fades in the object
     IEnumerator FadeIn()
     {
         //Gets renderers
@@ -106,19 +110,20 @@ public class Hallucination : MonoBehaviour
         float finalAlpha = renderers[0].material.color.a;
         float a = 0f;
 
+        //sets alphas to 0
         foreach (Renderer r in renderers)
         {
             Color c = r.material.color;
             r.material.color = new Color(c.r, c.g, c.b, 0f);
         }
 
-        //while alpha is greater than 0
+        //while alpha is less than finalAlpha
         while (a < finalAlpha)
         {
-            //decrease the alpha over time
-            a += Time.deltaTime / 0.5f;
+            //increase the alpha over time
+            a += Time.deltaTime / 0.25f;
 
-            //if alpha gets below zero, it is zero
+            //if alpha gets above final alpha, it is final alpha
             if (a > finalAlpha)
             {
                 a = finalAlpha;
