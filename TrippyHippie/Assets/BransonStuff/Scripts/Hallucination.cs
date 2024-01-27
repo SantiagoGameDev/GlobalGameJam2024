@@ -95,4 +95,43 @@ public class Hallucination : MonoBehaviour
         //destroy object after it fades out
         Destroy(this.gameObject);
     }
+
+    IEnumerator FadeIn()
+    {
+        //Gets renderers
+        Renderer[] renderers = new Renderer[2];
+        renderers = GetComponentsInChildren<Renderer>();
+
+        //gets alpha value of materials
+        float finalAlpha = renderers[0].material.color.a;
+        float a = 0f;
+
+        foreach (Renderer r in renderers)
+        {
+            Color c = r.material.color;
+            r.material.color = new Color(c.r, c.g, c.b, 0f);
+        }
+
+        //while alpha is greater than 0
+        while (a < finalAlpha)
+        {
+            //decrease the alpha over time
+            a += Time.deltaTime / 0.5f;
+
+            //if alpha gets below zero, it is zero
+            if (a > finalAlpha)
+            {
+                a = finalAlpha;
+            }
+
+            //apply new alpha to the renderers
+            foreach (Renderer r in renderers)
+            {
+                Color c = r.material.color;
+                r.material.color = new Color(c.r, c.g, c.b, a);
+            }
+
+            yield return new WaitForEndOfFrame();
+        }
+    }
 }
