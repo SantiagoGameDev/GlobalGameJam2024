@@ -164,14 +164,14 @@ WheelCollider:
   m_GameObject: {fileID: 167658819}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 3.5
+  m_Radius: 3.8
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 5
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -220,14 +220,14 @@ WheelCollider:
   m_GameObject: {fileID: 239810343}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 3.5
+  m_Radius: 3.8
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 5
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -518,22 +518,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxAccel: 10000
-  brakeAccel: 5000
-  turnSense: 200
+  brakeAccel: 10000
+  turnSense: 30
   maxSteerAngle: 35
   wheels:
   - wheelModel: {fileID: 1351257171}
     wheelCollider: {fileID: 1029398983}
-    axel: 0
+    axel: 1
   - wheelModel: {fileID: 1311804008}
     wheelCollider: {fileID: 943727997}
-    axel: 0
+    axel: 1
   - wheelModel: {fileID: 671319012}
     wheelCollider: {fileID: 167658821}
-    axel: 1
+    axel: 0
   - wheelModel: {fileID: 1395392671}
     wheelCollider: {fileID: 239810344}
-    axel: 1
+    axel: 0
 --- !u!54 &519396495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -542,7 +542,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519396493}
   serializedVersion: 4
-  m_Mass: 150
+  m_Mass: 220
   m_Drag: 0
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
@@ -590,7 +590,7 @@ GameObject:
   - component: {fileID: 671319015}
   - component: {fileID: 671319014}
   m_Layer: 0
-  m_Name: BLWheel
+  m_Name: FWheelR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -605,7 +605,7 @@ Transform:
   m_GameObject: {fileID: 671319012}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.97, y: -0.35, z: 1.1699998}
+  m_LocalPosition: {x: 1, y: -0.35, z: 1.1699998}
   m_LocalScale: {x: 1, y: 0.14385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -920,14 +920,14 @@ WheelCollider:
   m_GameObject: {fileID: 943727995}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 3.5
+  m_Radius: 3.8
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 5
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -998,7 +998,7 @@ WheelCollider:
     targetPosition: 0.5
   m_SuspensionDistance: 0.3
   m_ForceAppPointDistance: 0
-  m_Mass: 20
+  m_Mass: 5
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
     m_ExtremumSlip: 0.4
@@ -1033,7 +1033,7 @@ GameObject:
   - component: {fileID: 1311804011}
   - component: {fileID: 1311804010}
   m_Layer: 0
-  m_Name: FRWheel
+  m_Name: BWheelL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1048,7 +1048,7 @@ Transform:
   m_GameObject: {fileID: 1311804008}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.08, y: -0.35, z: -1.2}
+  m_LocalPosition: {x: -1, y: -0.35, z: -1.2}
   m_LocalScale: {x: 1, y: 0.14385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1117,7 +1117,7 @@ GameObject:
   - component: {fileID: 1351257174}
   - component: {fileID: 1351257173}
   m_Layer: 0
-  m_Name: FLWheel
+  m_Name: BWheelR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1132,7 +1132,7 @@ Transform:
   m_GameObject: {fileID: 1351257171}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: 0.97, y: -0.35, z: -1.2}
+  m_LocalPosition: {x: 1, y: -0.35, z: -1.2}
   m_LocalScale: {x: 1, y: 0.14385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1159,7 +1159,7 @@ MeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 73c176f402d2c2f4d929aa5da7585d17, type: 2}
+  - {fileID: 2100000, guid: 29bf86f75c442d9439e8a0b0ea573c7a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 1395392674}
   - component: {fileID: 1395392673}
   m_Layer: 0
-  m_Name: BRWheel
+  m_Name: FWheelL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1216,7 +1216,7 @@ Transform:
   m_GameObject: {fileID: 1395392671}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
-  m_LocalPosition: {x: -1.08, y: -0.35, z: 1.17}
+  m_LocalPosition: {x: -1, y: -0.35, z: 1.17}
   m_LocalScale: {x: 1, y: 0.14385, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -1438,7 +1438,7 @@ Transform:
   m_GameObject: {fileID: 1670465061}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.12, z: 0}
   m_LocalScale: {x: 1.5861, y: 1, z: 2.8927}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1463,8 +1463,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 0.9999998, y: 0.76364994, z: 1}
+  m_Center: {x: 0, y: 0.11817503, z: 0}
 --- !u!23 &1670465064
 MeshRenderer:
   m_ObjectHideFlags: 0

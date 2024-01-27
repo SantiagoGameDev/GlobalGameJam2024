@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CarController : MonoBehaviour
 {
@@ -39,10 +40,12 @@ public class CarController : MonoBehaviour
     private void Start()
     {
         playerActions = new PlayerActions();
-        playerActions.Car.Enable();
+        //playerActions.Car.Enable();
         carRb = GetComponent<Rigidbody>();
 
         carRb.centerOfMass = centerOfMass;
+
+        playerActions.Car.ExitCar.performed += ExitCar;
     }
 
     private void Update()
@@ -57,15 +60,13 @@ public class CarController : MonoBehaviour
         Brake();
     }
 
-    private void OnEnable()
-    {
-        if(playerActions != null)
-            playerActions.Car.Enable();
-    }
 
-    private void OnDisable()
+    private void OnCollisionEnter(Collision collision)
     {
-        playerActions.Car.Disable();
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            GameManager.Instance.SwitchControls();
+        }
     }
 
     private void UpdateInput()
@@ -111,7 +112,28 @@ public class CarController : MonoBehaviour
             }
         }
 
-        
-
     }
+
+    public void EnableCarControls()
+    {
+        playerActions.Car.Enable();
+    }
+
+    public void DisableCarControls()
+    {
+        playerActions.Car.Disable();
+    }
+
+    private void ExitCar(InputAction.CallbackContext context)
+    {
+        GameManager.Instance.SwitchControls();
+
+        foreach (Wheel wheel in wheels)
+        {
+            wheel.wheelCollider.attachedRigidbody.velocity = Vector3.zero;
+        }
+
+        carRb.velocity = Vector3.zero;  
+    }
+
 }

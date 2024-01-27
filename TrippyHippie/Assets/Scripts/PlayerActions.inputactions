@@ -114,6 +114,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ExitCar",
+                    "type": "Button",
+                    "id": "d480b959-adf7-4b53-8672-0e838f5f072e",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -180,6 +189,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "Brake",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5cea65ce-c42f-479a-9a78-9921f1c2cc3b",
+                    "path": "<Keyboard>/q",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ExitCar",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

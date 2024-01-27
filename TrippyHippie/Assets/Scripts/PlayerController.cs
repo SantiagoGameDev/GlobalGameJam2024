@@ -26,19 +26,17 @@ public class PlayerController : MonoBehaviour
     {
         
     }
-
-    private void OnEnable()
-    {
-        playerActions.Human.Enable();
-    }
-
-    private void OnDisable()
-    {
-        playerActions.Human.Disable();
-    }
-
     private void PlayerMovement()
     {
         
+    }
+
+    public void EnablePlayerControls()
+    {
+        playerActions.Human.Enable();
+    }
+    public void DisablePlayerControls()
+    {
+        playerActions.Human.Disable();
     }
 }
