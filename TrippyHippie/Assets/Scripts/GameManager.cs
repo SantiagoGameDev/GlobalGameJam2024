@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     private CarController carController;
     [SerializeField] private CameraFollow cameraFollow;
 
+    public bool isInCar;
+
     public bool canDmg;
     [SerializeField] private int carHP;
 
@@ -27,6 +29,8 @@ public class GameManager : MonoBehaviour
 
         playerController = player.GetComponent<PlayerController>();
         carController = car.GetComponent<CarController>();
+
+        isInCar = false;
 
         canDmg = true;
 
@@ -57,6 +61,7 @@ public class GameManager : MonoBehaviour
             player.gameObject.SetActive(false);
             carController.EnableCarControls();
 
+            isInCar = true;
             cameraFollow.target = car.transform;
         }
         else if (carController.isActiveAndEnabled) //Switching to Hippie
@@ -69,6 +74,7 @@ public class GameManager : MonoBehaviour
             playerController.EnablePlayerControls();
             carController.DisableCarControls();
 
+            isInCar = false;
             cameraFollow.target = player.transform;
 
         }

@@ -22,9 +22,23 @@ public class Hallucination : MonoBehaviour
     //time the hallucination spends fading
     private float fadeTime = 1f;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     // Start is called before the first frame update
     void Start()
     {
+        int randNum = Random.Range(0, 5);
+
+        if (randNum == 0)
+        {
+            if (audioSource != null) 
+            {
+                audioSource.Play();
+            }
+        }
+
+
         //initialize despawn timer
         despawnTimer = 0f;
 
