@@ -1594,7 +1594,7 @@ Transform:
   m_GameObject: {fileID: 1214788238}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.9, z: 13.74}
+  m_LocalPosition: {x: 0, y: 0.63, z: 13.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2429,6 +2429,7 @@ MonoBehaviour:
   hallucinations:
   - {fileID: 6910745292588555175, guid: 57f5d6512c12cf247b8196082e33cb1c, type: 3}
   - {fileID: 9067193111835445753, guid: b61d4b95656f92f43a28d3478b3591f2, type: 3}
+  - {fileID: 8243171115526656014, guid: 79f5e16bcd0649b4dae43a18ec143dff, type: 3}
   timeToSpawn: 3
   maxRadius: 40
   testMushroomCount: 0
