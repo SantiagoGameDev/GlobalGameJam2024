@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float speed;
+    [SerializeField] Animator animator;
 
     private PlayerActions playerActions;
     private Rigidbody rb;
@@ -24,7 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        
+        if ((rb.velocity.x >= 0.1f || rb.velocity.x <= -0.1f) || (rb.velocity.z >= 0.1f || rb.velocity.z <= -1.0f))
+            animator.Play("walk");
+
     }
     private void PlayerMovement()
     {
