@@ -57,6 +57,7 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         UpdateInput();
+        AnimateWheels();
     }
 
     private void LateUpdate()
@@ -151,6 +152,18 @@ public class CarController : MonoBehaviour
         foreach (Wheel wheel in wheels)
         {
             wheel.wheelCollider.brakeTorque = 0;
+        }
+    }
+
+    private void AnimateWheels()
+    {
+        foreach (Wheel wheel in wheels)
+        {
+            Quaternion rot;
+            Vector3 pos;
+            wheel.wheelCollider.GetWorldPose(out pos, out rot);
+            wheel.wheelModel.transform.position = pos;
+            wheel.wheelModel.transform.rotation = rot;
         }
     }
 

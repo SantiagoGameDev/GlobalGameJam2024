@@ -5,14 +5,13 @@ using UnityEngine;
 public class MushroomSpawner : MonoBehaviour
 {
     float spawnTimer;
+    [SerializeField]
     float timeToSpawn = 0.5f;
 
     [SerializeField]
     private GameObject mushroomPrefab;
 
     [SerializeField]
-    private GameObject spawnPlane;
-
     private int maxMushrooms = 100;
     [SerializeField]
     private List<GameObject> mushrooms = new List<GameObject>();
@@ -50,15 +49,15 @@ public class MushroomSpawner : MonoBehaviour
     {
         Vector3 pos = new Vector3();
 
-        if (spawnPlane != null)
+        if (this != null)
         {
-            float length = spawnPlane.transform.localScale.x * 9f;
-            float width = spawnPlane.transform.localScale.z * 9f;
+            float length = this.transform.localScale.x * 9f;
+            float width = this.transform.localScale.z * 9f;
 
-            float xPos = (Random.Range(0, length) - length / 2) + spawnPlane.transform.position.x;
-            float zPos = (Random.Range(0, width) - width / 2) + spawnPlane.transform.position.z;
+            float xPos = (Random.Range(0, length) - length / 2) + this.transform.position.x;
+            float zPos = (Random.Range(0, width) - width / 2) + this.transform.position.z;
 
-            pos = new Vector3(xPos, spawnPlane.transform.position.y, zPos);
+            pos = new Vector3(xPos, this.transform.position.y, zPos);
         }
 
         return pos;

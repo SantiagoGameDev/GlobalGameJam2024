@@ -12,11 +12,9 @@ public class PlayerVan : MonoBehaviour
     [SerializeField]
     AudioSource trippyAudio;
 
-    public AudioClip Gnome;
-    public AudioClip Wow;
-    public AudioClip HisNameIs;
-    public AudioClip AreYouSure;
-    public AudioClip Huh;
+    public AudioClip farOutMan;
+    public AudioClip peaceAndLove;
+    public AudioClip trippy;
 
     // Start is called before the first frame update
     void Start()
@@ -34,24 +32,18 @@ public class PlayerVan : MonoBehaviour
     {
         AudioClip clip = null;
 
-        int chosenClip = Random.Range(1, 6);
+        int chosenClip = Random.Range(1, 4);
 
         switch (chosenClip)
         {
             case 1:
-                clip = Gnome;
+                clip = farOutMan;
                 break;
             case 2:
-                clip = Wow;
+                clip = peaceAndLove;
                 break;
             case 3:
-                clip = HisNameIs;
-                break;
-            case 4:
-                clip = AreYouSure;
-                break;
-            case 5:
-                clip = Huh;
+                clip = trippy;
                 break;
         }
 
