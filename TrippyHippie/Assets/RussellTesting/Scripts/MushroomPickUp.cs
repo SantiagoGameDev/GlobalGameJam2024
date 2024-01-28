@@ -23,6 +23,7 @@ public class MushroomPickUp : MonoBehaviour
             PlayerVan.Instance.PlayRandomClip();
 
             m_Spawner.RemoveFromList(this.gameObject);
+            InGameHUD.Instance.MushCollected();
             Destroy(gameObject);
         }
     }
