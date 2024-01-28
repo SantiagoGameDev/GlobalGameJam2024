@@ -48,7 +48,11 @@ public class GameManager : MonoBehaviour
             carHP -= 1;
             StartCoroutine(Iframes());
             Debug.Log("Damage taken hp is now: " + carHP);
+
+            InGameHUD.Instance.UpdateHP(carHP);
         }
+
+
             
     }
 

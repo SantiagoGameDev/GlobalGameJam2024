@@ -11,6 +11,8 @@ public class PlayerController : MonoBehaviour
     private Rigidbody rb;
     private Vector3 moveInput;
 
+    [SerializeField] GameObject hippieModel;
+
     private void Awake()
     {
         playerActions = new PlayerActions();
@@ -25,6 +27,14 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        //var targetAngle = Mathf.Atan2(moveInput.x, moveInput.z);
+
+        if(moveInput.x != 0.0f || moveInput.z != 0.0f )
+            transform.rotation = Quaternion.LookRotation(new Vector3(moveInput.x, 0, moveInput.z));
+
+        //transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+        //hippieModel.transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+
         if ((rb.velocity.x >= 0.1f || rb.velocity.x <= -0.1f) || (rb.velocity.z >= 0.1f || rb.velocity.z <= -1.0f))
             animator.Play("walk");
 
