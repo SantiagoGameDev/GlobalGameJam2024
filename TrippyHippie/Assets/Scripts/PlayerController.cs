@@ -25,6 +25,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
+        var targetAngle = Mathf.Atan2(moveInput.x, moveInput.z);
+        transform.rotation = Quaternion.Euler(0.0f, targetAngle, 0.0f);
+
         if ((rb.velocity.x >= 0.1f || rb.velocity.x <= -0.1f) || (rb.velocity.z >= 0.1f || rb.velocity.z <= -1.0f))
             animator.Play("walk");
 
