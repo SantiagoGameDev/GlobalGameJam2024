@@ -21,7 +21,7 @@ public class GameManager : MonoBehaviour
     public bool isInCar;
 
     public bool canDmg;
-    [SerializeField] private int carHP;
+    [SerializeField] public int carHP;
 
     private void Awake()
     {

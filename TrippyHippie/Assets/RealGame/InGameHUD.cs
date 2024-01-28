@@ -12,6 +12,9 @@ public class InGameHUD : MonoBehaviour
     [SerializeField] TMP_Text mushCount;
     [SerializeField] Slider hpSlider;
 
+    [SerializeField] GameObject gameOverScreen;
+    [SerializeField] AudioSource themeSong;
+
     private void Awake()
     {
         instance = this;
@@ -20,7 +23,11 @@ public class InGameHUD : MonoBehaviour
 
     private void Update()
     {
-        
+        if(GameManager.Instance.carHP == 0)
+        {
+            gameOverScreen.SetActive(true);
+            themeSong.gameObject.SetActive(false);
+        }
     }
 
     public void MushCollected()
