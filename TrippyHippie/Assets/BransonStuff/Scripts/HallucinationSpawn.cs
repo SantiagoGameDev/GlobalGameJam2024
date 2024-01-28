@@ -47,7 +47,10 @@ public class HallucinationSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        debugText.text = testMushroomCount.ToString();
+        if (debugText != null)
+        {
+            debugText.text = testMushroomCount.ToString();
+        }
 
         testMushroomCount = PlayerVan.Instance.playerMushroomCount;
 
