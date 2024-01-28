@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
@@ -9,6 +10,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField]
     Image trippyView;
+
+    [SerializeField] GameObject credits;
 
     private float newAlpha;
     private float alphaIncreaseRate;
@@ -35,6 +38,26 @@ public class UIManager : MonoBehaviour
         trippyView.color = new Color(randomRed, randomGreen, randomBlue, newAlpha);
 
         PlayerVan.Instance.PlayRandomClip();
+    }
+
+    public void StartGameBtn()
+    {
+        SceneManager.LoadScene("TrippyHippie");
+    }
+
+    public void ExitGameBtn()
+    {
+        Application.Quit();
+    }
+
+    public void OpenCredits()
+    {
+        credits.gameObject.SetActive(true);
+    }
+
+    public void CloseCredits()
+    {
+        credits.gameObject.SetActive(false);
     }
 
     /*public void SetFlashTime()
