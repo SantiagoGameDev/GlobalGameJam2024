@@ -57,7 +57,7 @@ public class CarController : MonoBehaviour
     private void Update()
     {
         UpdateInput();
-        AnimateWheels();
+        //AnimateWheels();
     }
 
     private void LateUpdate()
