@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerVan : MonoBehaviour
@@ -31,27 +32,29 @@ public class PlayerVan : MonoBehaviour
 
     public void PlayRandomClip()
     {
-        int chosenClip = Random.Range(1, 5);
+        AudioClip clip = null;
 
-        if (chosenClip == 1)
+        int chosenClip = Random.Range(1, 6);
+
+        switch (chosenClip)
         {
-            trippyAudio.PlayOneShot(Gnome);
+            case 1:
+                clip = Gnome;
+                break;
+            case 2:
+                clip = Wow;
+                break;
+            case 3:
+                clip = HisNameIs;
+                break;
+            case 4:
+                clip = AreYouSure;
+                break;
+            case 5:
+                clip = Huh;
+                break;
         }
-        else if (chosenClip == 2)
-        {
-            trippyAudio.PlayOneShot(Wow);
-        }
-        else if (chosenClip == 3)
-        {
-            trippyAudio.PlayOneShot(HisNameIs);
-        }
-        else if (chosenClip == 4)
-        {
-            trippyAudio.PlayOneShot(AreYouSure);
-        }
-        else if (chosenClip == 5)
-        {
-            trippyAudio.PlayOneShot(Huh);
-        }
+
+        trippyAudio.PlayOneShot(clip);
     }
 }

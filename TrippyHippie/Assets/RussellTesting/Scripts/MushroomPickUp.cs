@@ -20,6 +20,8 @@ public class MushroomPickUp : MonoBehaviour
             WorldData.Instance.totalMushroomsInGame -= 1;
             PlayerVan.Instance.playerMushroomCount += 1;
 
+            PlayerVan.Instance.PlayRandomClip();
+
             m_Spawner.RemoveFromList(this.gameObject);
             Destroy(gameObject);
         }
